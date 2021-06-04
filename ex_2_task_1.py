@@ -34,14 +34,50 @@
 # As proof, please manually copy/paste the console output for one run into a file called
 # results1.txt
 
+
 def is_valid_email_address(s):
-    
-    # your code here
 
-    
+    num_at = s.count('@')
+    if num_at != 1:
+        return 8, "Email address must contain one @"
 
 
+    AB = s.split('@')
+    A = AB[0]
+
+    num_at = s.count('.')
+    if num_at != 1:
+        return 9, "Post @ must contain a ."
+   
+    postAt = AB[1].split('.')
+    B = postAt[0]
+    C = postAt[1]
     
+    # Part A
+    if len(A)<3:
+        return 1, "\"" + A + "\"" + " is too short. It must contain more than 3 alpha numeric characters"
+    if len(A)>16:
+        return 2, "\"" + A + "\"" + " is too long. It must contain less than 16 alpha numeric characters"
+    if A.isalnum() == False:
+        return 6, "\"" + A + "\"" + " is not valid. Email cannot contain any special characters."
+
+
+    # Part B
+    if len(B)<2:
+        return 3, "\"" + B + "\"" + " is too short. It must contain more than 2 alpha numeric characters"
+    if len(B)>8:
+        return 4, "\"" + B + "\"" + " is too long. It must contain less than 8 alpha numeric characters"
+    if B.isalnum() == False:
+        return 7, "\"" + B + "\"" + " is not valid. Email cannot contain any special characters."
+
+    # Part C
+    if C not in ["com", "edu", "org", "gov"]: 
+        return 5, "\"." + C + "\"" + " is not valid. Email address must be a .com, .gov, .edu, or .org"
+
+    # If s passes all tests
+    return None, "Seems legit."
+
+# print(is_valid_email_address("chris.edu"))
 
 # This if ensures that the following is NOT run if this file was imported as a module (which we'll do next!)
 if __name__ == "__main__":
@@ -63,8 +99,8 @@ if __name__ == "__main__":
     for e in email_list:
         r, s = is_valid_email_address(e) 
         if r == None:
-            print(e, s) # OK
+            print(f"error code: {r} ({e}) --> {s}") # OK
         else:
-            print(f"{e} - error: {s}, error code: {r}") # Error
+            print(f"error code: {r} ({e}) --> {s}") # Error
 
         
