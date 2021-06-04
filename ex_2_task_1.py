@@ -37,10 +37,12 @@
 
 def is_valid_email_address(s):
 
+    if len(s)==0:
+        return 10, "No input detected. Please enter an email address."
+
     num_at = s.count('@')
     if num_at != 1:
         return 8, "Email address must contain one @"
-
 
     AB = s.split('@')
     A = AB[0]
@@ -94,6 +96,7 @@ if __name__ == "__main__":
         "chris@letsgo!.org",
         "chris@megasavings.org",
         "tc@tank.com",
+        "",
         ]
     # validate each email from the list
     for e in email_list:
