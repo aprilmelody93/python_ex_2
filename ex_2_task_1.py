@@ -46,9 +46,8 @@ def is_valid_email_address(s):
     A = AB[0]
    
     postAt = AB[1].split('.')
-
-    num_at = AB[1].count('.')
-    if num_at != 1:
+    num_dot = AB[1].count('.')
+    if num_dot != 1:
       return 9, "Post @ must contain a ."
       
     B = postAt[0]
