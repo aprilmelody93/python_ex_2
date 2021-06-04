@@ -44,12 +44,13 @@ def is_valid_email_address(s):
 
     AB = s.split('@')
     A = AB[0]
-
-    num_at = s.count('.')
-    if num_at != 1:
-        return 9, "Post @ must contain a ."
    
     postAt = AB[1].split('.')
+
+    num_at = AB[1].count('.')
+    if num_at != 1:
+      return 9, "Post @ must contain a ."
+      
     B = postAt[0]
     C = postAt[1]
     
